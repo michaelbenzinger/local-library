@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var { DEV_URI } = require('./config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -13,7 +14,7 @@ var compression = require('compression');
 var helmet = require('helmet');
 
 // Set up default mongoose connection
-var mongoDB = process.env.MONGODB_URI || process.env.MONGODBDEV_URI;
+var mongoDB = process.env.MONGODB_URI || DEV_URI;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Get the default connection

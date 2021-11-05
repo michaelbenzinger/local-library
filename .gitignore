@@ -1,2 +1,3 @@
 node_modules
-populatedb
+populatedb.js
+config.js
