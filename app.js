@@ -4,7 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var { DEV_URI } = require('./config');
+let DEV_URI = null;
+if (process.env.MONGODB_URI === undefined) {
+  DEV_URI = require('./config').DEV_URI;
+}
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
