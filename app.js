@@ -13,7 +13,7 @@ var compression = require('compression');
 var helmet = require('helmet');
 
 // Set up default mongoose connection
-var mongoDB = 'mongodb+srv://mbe-student:mbe-pug-devel@express-cluster.swpez.mongodb.net/express-cluster?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URI || process.env.MONGODBDEV_URI;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Get the default connection
