@@ -1,7 +1,6 @@
 extends layout
 
 block content
-
   h1 ID: #{bookinstance._id}
 
   p #[strong Title:]
@@ -18,9 +17,11 @@ block content
 
   if bookinstance.status!='Available'
     p #[strong Due back:] #{bookinstance.due_back_formatted}
-
   hr
-  p
-    a(href=bookinstance.url+'/delete') Delete book instance
-  p
-    a(href=bookinstance.url+'/update') Update book instance
+  p Do you really want to delete this Book Instance?
+
+  form(method='POST' action='')
+    div.form-group
+      input#bookinstanceid.form-control(type='hidden',name='bookinstanceid', required='true', value=bookinstance._id )
+
+    button.btn.btn-primary(type='submit') Delete
